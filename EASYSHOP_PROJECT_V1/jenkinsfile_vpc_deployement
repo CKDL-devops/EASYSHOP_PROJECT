@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage('GIT PULLING) {
+        stage('GIT PULLING') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/CKDL-devops/EASYSHOP_PROJECT.git'
