@@ -32,7 +32,7 @@ pipeline {
         //     }
         // }
 
-        stage('Terraform Destroy) {
+        stage('Terraform Destroy') {
             steps {
                 dir('EASYSHOP_PROJECT_V1') { // change to your terraform root folder
                     sh 'terraform destroy -auto-approve'
@@ -40,29 +40,29 @@ pipeline {
             }
         }
 
-        stage('Terraform Validate') {
-            steps {
-                dir('EASYSHOP_PROJECT_V1') {
-                    sh 'terraform validate'
-                }
-            }
-        }
+    //     stage('Terraform Validate') {
+    //         steps {
+    //             dir('EASYSHOP_PROJECT_V1') {
+    //                 sh 'terraform validate'
+    //             }
+    //         }
+    //     }
 
-        stage('Terraform Plan') {
-            steps {
-                dir('EASYSHOP_PROJECT_V1') {
-                    sh 'terraform plan -out=tfplan'
-                }
-            }
-        }
+    //     stage('Terraform Plan') {
+    //         steps {
+    //             dir('EASYSHOP_PROJECT_V1') {
+    //                 sh 'terraform plan -out=tfplan'
+    //             }
+    //         }
+    //     }
 
-        stage('Terraform Apply') {
-            steps {
-                dir('EASYSHOP_PROJECT_V1') {
-                    sh 'terraform apply -auto-approve tfplan'
-                }
-            }
-        }
+    //     stage('Terraform Apply') {
+    //         steps {
+    //             dir('EASYSHOP_PROJECT_V1') {
+    //                 sh 'terraform apply -auto-approve tfplan'
+    //             }
+    //         }
+    //     }
     }
 
     post {
