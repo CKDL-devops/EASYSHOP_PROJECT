@@ -32,6 +32,23 @@ pipeline {
         //     }
         // }
 
+    
+
+        stage('Terraform Validate') {
+            steps {
+                dir('EASYSHOP_PROJECT_V1') {
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                dir('EASYSHOP_PROJECT_V1') {
+                    sh 'terraform plan -out=tfplan'
+                }
+            }
+        }
         stage('Terraform Destroy') {
             steps {
                 dir('EASYSHOP_PROJECT_V1') { // change to your terraform root folder
@@ -39,22 +56,6 @@ pipeline {
                 }
             }
         }
-
-    //     stage('Terraform Validate') {
-    //         steps {
-    //             dir('EASYSHOP_PROJECT_V1') {
-    //                 sh 'terraform validate'
-    //             }
-    //         }
-    //     }
-
-    //     stage('Terraform Plan') {
-    //         steps {
-    //             dir('EASYSHOP_PROJECT_V1') {
-    //                 sh 'terraform plan -out=tfplan'
-    //             }
-    //         }
-    //     }
 
     //     stage('Terraform Apply') {
     //         steps {
@@ -71,7 +72,7 @@ pipeline {
             cleanWs()
         }
         success {
-            echo "Terraform Infrastructure deployed successfully ✅"
+            echo "Terraform Infrastructure destroyed successfully ✅"
         }
         failure {
             echo "Terraform deployment failed or not successfull ❌"
