@@ -74,7 +74,7 @@ pipeline {
             echo "Terraform Infrastructure deployed successfully ✅"
         }
         failure {
-            echo "Terraform deployment failed ❌"
+            echo "Terraform deployment failed or not successfull ❌"
         }
     }
 }
