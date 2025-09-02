@@ -1,0 +1,12 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: viewer-cluster-role
+  labels:
+    # Add these permissions to the "view" default role.
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+rules:
+- apiGroups: ["*"]
+  resources: ["deployments","ConfigMaps", "secrets","pods","services","PersitentVolumesClaims"]
+  verbs: ["get", "list", "watch"]
